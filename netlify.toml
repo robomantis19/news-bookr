@@ -1,9 +1,9 @@
 [build]
   command = "npm run build"
-  publish="/news-bookr/build"
+  publish="/news-bookr"
   base = "/news-bookr"
 
   [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/news-bookr/public/index.html"
   status = 200
