@@ -7,9 +7,11 @@ import { PrivateRoute } from './helpers/PrivateRoute';
 
 function App() {
   return (
-    <div className="App">e
+    <div className="App">
+      <Link to='/'> Home </Link>
+      <Link to='/profile'>Profile</Link>
       <Route exact path='/' component={Home} />
-      <Route path='/profile' component={Profile} />
+      <Route exact path='/profile' component={Profile} />
     </div>
   );
 }
