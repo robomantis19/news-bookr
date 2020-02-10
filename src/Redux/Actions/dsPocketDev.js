@@ -13,9 +13,10 @@ export const setPocket = (input) => (dispatch) => {
     
     
     axios.post(`https://cors-anywhere.herokuapp.com/https://getpocket.com/v3/oauth/request`, input)
+    
     .then( res => { 
-        console.log(res, 'get response')
-        dispatch({ type: constants.GOT_POCKET_DATA, payload: res.data})
+        console.log(res.data.slice(5))
+        dispatch({ type: constants.GOT_POCKET_DATA, payload: res.data.slice(5)})
     })
     .catch(err => { 
         console.log('pocket post for token error:', err); 

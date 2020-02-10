@@ -11,8 +11,9 @@ function Home(props) {
         <div>
             Welcome Home.
             <button onClick={() => props.setPocket({consumer_key: '89776-ae09204f9d4913e465d8642b', redirect_uri: 'https://xenodochial-bardeen-1bef0f.netlify.com/profile'})}>submit for token</button>
-            {props.pocket_token ? window.location.replace(`https://getpocket.com/auth/authorize?request_token=${props.pocket_token}&redirect_uri=https://xenodochial-bardeen-1bef0f.netlify.com/profile`): console.log(props.pocket_token)}
-            {console.log(props.pocket_token)}
+            {props.pocket_token && !props.isFetchingPocketDeveloper ? console.log(props.pocket_token) : console.log('...waiting for token')}
+            {props.pocket_token && !props.isFetchingPocketDeveloper ? window.location.replace(`https://getpocket.com/auth/authorize?request_token=${props.pocket_token}&redirect_uri=https://xenodochial-bardeen-1bef0f.netlify.com/profile`): '...waiting for token'}
+            
             
         </div>
     )
