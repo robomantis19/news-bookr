@@ -1,5 +1,5 @@
 import { axiosWithAuth } from '../../helpers/axiosWithAuth';
-import {constants} from '../constants'
+import constants from '../constants'
 
 export const Login = (userId) => { 
     return {type: constants.USER_LOGIN, payload: userId}

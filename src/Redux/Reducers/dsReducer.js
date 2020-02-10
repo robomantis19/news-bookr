@@ -1,9 +1,9 @@
-import {constants} from '../constants'
+import constants from '../constants'
 
 const initialState = {
     isFetchingPocketDeveloper: false, 
     isFetchingPocketDeveloperError: null,
-    pocket_token: null
+    pocket_token: ''
 }
 
 export const dsReducer = (state=initialState, {type, payload}) => { 
@@ -14,11 +14,14 @@ export const dsReducer = (state=initialState, {type, payload}) => {
                 isFetchingPocketDeveloper: true
             }
         case constants.GOT_POCKET_DATA:
+            console.log('state', state)
             return {
                 ...state, 
                 pocket_token: payload, 
-                isFetchingPocketDeveloper: false
+                isFetchingPocketDeveloper: false,
+                
             }
+            
         default: 
             return state
     }
