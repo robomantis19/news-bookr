@@ -3,7 +3,7 @@ import {constants} from '../constants'
 const initialState = {
     isFetchingPocketDeveloper: false, 
     isFetchingPocketDeveloperError: null,
-    pocket_token: ''
+    pocket_token: null
 }
 
 export const dsReducer = (state=initialState, {type, payload}) => { 
