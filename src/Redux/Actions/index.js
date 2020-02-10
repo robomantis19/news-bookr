@@ -3,10 +3,10 @@ import {
     Login, 
     storeHits,
 
-} from './serverActions'
+} from './serverActions.js'
 import{
     setPocket,
-} from './dsPocketDev'; 
+} from './dsPocketDev.js'; 
 
 export {
     Login, 

@@ -1,4 +1,4 @@
-import constants from '../constants';
+import {constants} from '../constants';
 
 const initialState = {
     isFetchingMercuryData: false,
@@ -29,7 +29,7 @@ const initialState = {
     VIEWS: 0,  
 }
 
-export const serverReducer = (state = initialState, {type, payload}) => { 
+export const serverReducer = (state=initialState, {type, payload}) => { 
     switch(type){
         case constants.GETTING_MERCURY_DATA:
             return {
