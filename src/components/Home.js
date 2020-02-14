@@ -47,10 +47,11 @@ function Home(props) {
         url: itemName ? itemName : 'https://www.daveramsey.com/blog/real-estate-trends', 
         title: "",
         image: "",
-        description: ""
+        description: "",
+        id: Date.now() 
       }
       setOutput(item);
-      
+      console.log('id', item.id)
     }
     const submitUrl = e => { 
       e.preventDefault();
@@ -64,6 +65,18 @@ function Home(props) {
       Mercury.parse(output.url ? `https://cors-anywhere.herokuapp.com/${output.url}` :`https://cors-anywhere.herokuapp.com/https://www.daveramsey.com/blog/real-estate-trends` , {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
       console.log("snapshots", snapshot);
     },[output.url])
+    function deleteItem(id){
+      console.log('ID:', id)
+      let id_filter = snapshot.filter( (item) => { 
+        if(item.lead_image_url !== id){
+          return item
+        }else if(item.lead_image_url ===`https://cdn.ramseysolutions.net/media/b2b/elp/blog/real-estate-trends-header.jpg`){
+          return item
+        }
+      })
+      console.log('output', id_filter)
+      setSnapshot(id_filter);
+    }
     
     const labels = {
       0.5: 'Useless',
@@ -232,7 +245,7 @@ function Copyright() {
                         {/* End hero unit */}
                         <Grid container spacing={4}>
                             {snapshot.length > 0 ? snapshot.map(card => (
-                            <Grid item key={card} xs={12} sm={6} md={4}>
+                            <Grid item key={card.id} xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
                                 <CardMedia
                                     className={classes.cardMedia}
@@ -252,8 +265,8 @@ function Copyright() {
                                     <Button size="small" color="primary">
                                     View
                                     </Button>
-                                    <Button size="small" color="primary">
-                                    Edit
+                                    <Button onClick={() => deleteItem(card.lead_image_url)}size="small" color="primary">
+                                    Delete
                                     </Button>
                                     <div className={classes.root}>
                                       <Rating
