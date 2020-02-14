@@ -33,7 +33,7 @@ const bblue = orange[800];
 function Home(props) { 
     const [input, setInput] = useState("")      //https://www.daveramsey.com/blog/real-estate-trends'})
     const [output, setOutput] = useState({}); 
-    const [snapshot, setSnapshot] = useState("");
+    const [snapshot, setSnapshot] = useState([]);
     // console.log(props.isFetchingPocketDeveloper);
     const history = useHistory();
     
@@ -61,10 +61,10 @@ function Home(props) {
     //stars
     useEffect(() => { 
       console.log('useEffect token', props.pocket_token)
-      Mercury.parse(output.url ? `https://cors-anywhere.herokuapp.com/${output.url}` :`https://cors-anywhere.herokuapp.com/https://www.daveramsey.com/blog/real-estate-trends` , {contentType: 'text'}).then(result => setSnapshot(result))
-      
+      Mercury.parse(output.url ? `https://cors-anywhere.herokuapp.com/${output.url}` :`https://cors-anywhere.herokuapp.com/https://www.daveramsey.com/blog/real-estate-trends` , {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
+      console.log("snapshots", snapshot);
     },[output.url])
-
+    
     const labels = {
       0.5: 'Useless',
       1: 'Useless+',
@@ -155,11 +155,11 @@ function Copyright() {
       flexDirection: 'column'
     }
   }));
-  const cards = [{
-        title: snapshot.title,
-        image: snapshot.lead_image_url,
-        description: snapshot.content,
-      }];
+  // const cards = [{
+  //       title: snapshot.title,
+  //       image: snapshot.lead_image_url,
+  //       description: snapshot.content,
+  //     }];
  
   const classes = useStyles();
     return (
@@ -231,21 +231,21 @@ function Copyright() {
                         <Container className={classes.cardGrid} maxWidth="lg">
                         {/* End hero unit */}
                         <Grid container spacing={4}>
-                            {cards.map(card => (
+                            {snapshot.length > 0 ? snapshot.map(card => (
                             <Grid item key={card} xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
                                 <CardMedia
                                     className={classes.cardMedia}
-                                    image= {cards[0].image}
-                                    title={cards[0].title}
+                                    image= {card.lead_image_url}
+                                    title={card.title}
                                 />
                                 <CardContent className={classes.cardContent}>
                                     <Typography gutterBottom variant="h5" component="h2">
-                                    {cards[0].title}
+                                    {card.title}
                                     </Typography>
                                     <Typography>
                                       {/* {console.log(cards[0].description)} */}
-                                        {`${cards[0].description}`.slice(0,500)}
+                                        {`${card.content}`.slice(0,500)}
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
@@ -273,7 +273,7 @@ function Copyright() {
                                 </CardActions>
                                 </Card>
                             </Grid>
-                            ))}
+                            )) : ' ... input snapshot above'}
                         </Grid>
                         </Container>
                     </main>
