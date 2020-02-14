@@ -1,20 +1,294 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux'; 
 import { setPocket } from '../Redux/Actions';
 import {useHistory} from 'react-router-dom'; 
-function Home(props) { 
+import Mercury from "@postlight/mercury-parser";
+import {Link as HBLink} from 'react-router-dom';
+//stars
 
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+
+
+// album
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import CameraIcon from '@material-ui/icons/PhotoCamera';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
+//navbar
+import orange from '@material-ui/core/colors/orange';
+import { TextField } from '@material-ui/core';
+
+const bblue = orange[800];
+function Home(props) { 
+    const [input, setInput] = useState("")      //https://www.daveramsey.com/blog/real-estate-trends'})
+    const [output, setOutput] = useState({}); 
+    const [snapshot, setSnapshot] = useState("");
     // console.log(props.isFetchingPocketDeveloper);
     const history = useHistory();
+    
+    
+    console.log(snapshot);
+    const changeHandler = e => { 
+      setInput(e.target.value)
+    }
+    function addItem(itemName){
+      let item = {
+        url: itemName ? itemName : 'https://www.daveramsey.com/blog/real-estate-trends', 
+        title: "",
+        image: "",
+        description: ""
+      }
+      setOutput(item);
+      
+    }
+    const submitUrl = e => { 
+      e.preventDefault();
+      // setInput(input);
+      addItem(input)
+      setInput("")
+    }
+    //stars
     useEffect(() => { 
-        console.log('useEffect token', props.pocket_token)
-    },[props.pocket_token])
+      console.log('useEffect token', props.pocket_token)
+      Mercury.parse(output.url ? `https://cors-anywhere.herokuapp.com/${output.url}` :`https://cors-anywhere.herokuapp.com/https://www.daveramsey.com/blog/real-estate-trends` , {contentType: 'text'}).then(result => setSnapshot(result))
+      
+    },[output.url])
+
+    const labels = {
+      0.5: 'Useless',
+      1: 'Useless+',
+      1.5: 'Poor',
+      2: 'Poor+',
+      2.5: 'Ok',
+      3: 'Ok+',
+      3.5: 'Good',
+      4: 'Good+',
+      4.5: 'Excellent',
+      5: 'Excellent+',
+    };
+    
+    
+    const [value, setValue] = React.useState(0);
+    const [hover, setHover] = React.useState(-1);
+   
+    
+    
+    // const muiTheme = createMuiTheme({
+    //   palette: {
+    //     textColor: Colors.orange,
+    //     primary1Color: Colors.blueGrey,
+    //     primary2Color: Colors.indigo,
+    //     accent1Color: Colors.red,
+    //     pickerHeaderColor: Colors.orange,
+    //   },
+    //   appBar: {
+    //     height: 60,
+    //   },
+    // });
+function Copyright() {
+    return (
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="https://material-ui.com/">
+          Your Website
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
+  const useStyles = makeStyles(theme => ({
+    icon: {
+      marginRight: theme.spacing(1),
+    },
+    heroContent: {
+      backgroundColor: theme.palette.background.paper,
+      padding: theme.spacing(8, 0, 6),
+    },
+    heroButtons: {
+      marginTop: theme.spacing(4),
+    },
+    cardGrid: {
+      paddingTop: theme.spacing(8),
+      paddingBottom: theme.spacing(8),
+    },
+    card: {
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    cardMedia: {
+      paddingTop: '56.25%', // 16:9
+    },
+    cardContent: {
+      flexGrow: 1,
+    },
+    footer: {
+      backgroundColor: theme.palette.background.paper,
+      padding: theme.spacing(6),
+    },
+    menuText: {
+      marginRight: 200,
+      fontWeight: 'bold',
+      
+    },
+    
+    root: {
+      width: 200,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    container: {
+      display: 'flex', 
+      flexDirection: 'column'
+    }
+  }));
+  const cards = [{
+        title: snapshot.title,
+        image: snapshot.lead_image_url,
+        description: snapshot.content,
+      }];
+ 
+  const classes = useStyles();
     return (
         <div>
-            Welcome Home.
+             
+            {/* Welcome Home.
             <button onClick={() => props.setPocket({consumer_key: '89776-ae09204f9d4913e465d8642b', redirect_uri: 'https://xenodochial-bardeen-1bef0f.netlify.com/profile'})}>submit for token</button>
-            {/* {props.pocket_token && !props.isFetchingPocketDeveloper == true? console.log('hi there, here is the token:', props.pocket_token) : console.log('...waiting for token')} */}
-            {props.pocket_token && !props.isFetchingPocketDeveloper ? window.location.replace(`https://getpocket.com/auth/authorize?request_token=${props.pocket_token}&redirect_uri=https://xenodochial-bardeen-1bef0f.netlify.com/profile`) : '...waiting for token'}
+            {props.pocket_token && !props.isFetchingPocketDeveloper ? window.location.replace(`https://getpocket.com/auth/authorize?request_token=${props.pocket_token}&redirect_uri=https://xenodochial-bardeen-1bef0f.netlify.com/profile`) : '...waiting for token'} */}
+                {/* <div>
+                    <h1>{snapshot.title}</h1>
+                    <h2>{snapshot.author}</h2>
+                    <h3>{snapshot.excerpt}</h3>
+                    <img style={{objectFit:'fill'}}src={snapshot.lead_image_url}></img>
+                    <p>{snapshot.content}</p>
+                </div> */}
+                <React.Fragment>
+                    <CssBaseline />
+                    
+                    <AppBar position="relative" >
+                        <Toolbar style={{backgroundColor: bblue}} maxWidth="lg" display="flex" justifycontent="spaceBetween" flexdirection="row" align="center" >
+                        <CameraIcon className={classes.icon} />
+                        <Typography variant="h6" className={classes.menuText} color="inherit" noWrap>
+                            Housing Busters
+                        </Typography>
+                        <Typography variant="h6"  className={classes.menuText} color="inherit" noWrap>
+                        <HBLink  className="link-color" style={{textDecoration: 'none', color: 'white'}} to='/'> Home </HBLink>
+                        </Typography>
+                        <Typography  variant="h6" className={classes.menuText} color="inherit" noWrap>
+                          <HBLink className="link-color" className={classes.menuText} style={{textDecoration: 'none', color: 'white'}} to='/profile'>Profile</HBLink>
+                        </Typography>
+                            
+                            
+                        </Toolbar>
+                    </AppBar>
+                  
+                    <main>
+                        {/* Hero unit */}
+                        <div className={classes.heroContent}>
+                        <Container maxWidth="md">
+                            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                                Housing Busters!
+                            </Typography>
+                            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+                                Welcome to Housing Busters, you can save snapshots of all your favorite housing websites and articles here.
+                            </Typography>
+                            <div className={classes.heroButtons}>
+                            <Grid container spacing={2} justify="center">
+                                
+                                <form className={classes.container} onSubmit={submitUrl} style={{width: '50%'}}>
+                                <TextField id="filled-basic" variant="filled"
+                                    type="text"
+                                    label="...url of website you want snapshot of goes here"
+                                    name="url"
+                                    value={input}
+                                    onChange={changeHandler}
+                                  />
+                                  {/* <button>Submit</button> */}
+                                  
+                                    <Button type="submit" variant="contained" color="primary">
+                                      Submit
+                                    </Button>
+                                
+                                  
+                                </form>
+                            </Grid>
+                            </div>
+                        </Container>
+                        </div>
+                        <Container className={classes.cardGrid} maxWidth="lg">
+                        {/* End hero unit */}
+                        <Grid container spacing={4}>
+                            {cards.map(card => (
+                            <Grid item key={card} xs={12} sm={6} md={4}>
+                                <Card className={classes.card}>
+                                <CardMedia
+                                    className={classes.cardMedia}
+                                    image= {cards[0].image}
+                                    title={cards[0].title}
+                                />
+                                <CardContent className={classes.cardContent}>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                    {cards[0].title}
+                                    </Typography>
+                                    <Typography>
+                                      {/* {console.log(cards[0].description)} */}
+                                        {`${cards[0].description}`.slice(0,500)}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Button size="small" color="primary">
+                                    View
+                                    </Button>
+                                    <Button size="small" color="primary">
+                                    Edit
+                                    </Button>
+                                    <div className={classes.root}>
+                                      <Rating
+                                        name="hover-feedback"
+                                        value={value}
+                                        precision={1}
+                                        onChange={(event, newValue) => {
+                                          setValue(newValue);
+                                        }}
+                                        onChangeActive={(event, newHover) => {
+                                          setHover(newHover);
+                                        }}
+                                      />
+                                      {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+                                    </div>
+                                      
+                                </CardActions>
+                                </Card>
+                            </Grid>
+                            ))}
+                        </Grid>
+                        </Container>
+                    </main>
+                    {/* Footer */}
+                    {/* <footer className={classes.footer}>
+                        <Typography variant="h6" align="center" gutterBottom>
+                        Footer
+                        </Typography>
+                        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                        Something here to give the footer a purpose!
+                        </Typography>
+                        <Copyright />
+                    </footer> */}
+                    {/* End footer */}
+                </React.Fragment>
             
             
         </div>
