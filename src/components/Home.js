@@ -216,7 +216,7 @@ function Copyright() {
                                 Housing Busters!
                             </Typography>
                             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                                Welcome to Housing Busters, you can save snapshots of all your favorite housing websites and articles here.
+                                Welcome to Housing Busters, you can save snapshots of all your favorite housing websites and articles here. Test it out here or go straight to your profile to save.
                             </Typography>
                             <div className={classes.heroButtons}>
                             <Grid container spacing={2} justify="center">
