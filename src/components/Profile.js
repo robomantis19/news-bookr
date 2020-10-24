@@ -213,6 +213,9 @@ function Copyright() {
                         </Toolbar>
                     </AppBar>
                     <Topbar/>
+                    <div>
+                      <h3>Click on the topbar to open panel on side of your chosing</h3>
+                    </div>
                     <main>
                         {/* Hero unit */}
                         <div className={classes.heroContent}>
@@ -234,8 +237,8 @@ function Copyright() {
                                   />
                                   {/* <button>Submit</button> */}
                                   
-                                    <Button type="submit" variant="contained" color="primary">
-                                      Submit
+                                    <Button type="submit" variant="contained" color="secondary">
+                                      save snapshots
                                     </Button>
                                 
                                   
