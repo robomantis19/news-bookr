@@ -46,7 +46,7 @@ function Profile(props) {
     }
     function addItem(itemName){
       let item = {
-        url: itemName ? itemName : 'https://www.daveramsey.com/blog/real-estate-trends', 
+        url: itemName, 
         title: "",
         image: "",
         description: "",
@@ -64,7 +64,7 @@ function Profile(props) {
     //stars
     useEffect(() => { 
       console.log('useEffect token', props.pocket_token)
-      Mercury.parse(output.url ? `https://cors-anywhere.herokuapp.com/${output.url}` :`https://cors-anywhere.herokuapp.com/https://www.daveramsey.com/blog/real-estate-trends` , {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
+      Mercury.parse( `https://cors-anywhere.herokuapp.com/${output.url}`, {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
       console.log("snapshots", snapshot);
     },[output.url])
     function deleteItem(id){
@@ -247,8 +247,10 @@ function Copyright() {
                             </div>
                         </Container>
                         </div>
+                        { output.url  ? 
                         <Container className={classes.cardGrid} maxWidth="lg">
                         {/* End hero unit */}
+                         
                         <Grid container spacing={4}>
                             {snapshot.length > 0 ? snapshot.map(card => (
                             <Grid item key={card.id} xs={12} sm={6} md={4}>
@@ -258,6 +260,7 @@ function Copyright() {
                                     image= {card.lead_image_url}
                                     title={card.title}
                                 />
+
                                 <CardContent className={classes.cardContent}>
                                     <Typography gutterBottom variant="h5" component="h2">
                                     {card.title}
@@ -295,7 +298,12 @@ function Copyright() {
                             )) : ' ... input snapshot above'}
                         </Grid>
                         </Container>
-                    </main>
+                        :
+                        null
+                                      
+                                      
+                                      }
+                        </main>
                     {/* Footer */}
                     {/* <footer className={classes.footer}>
                         <Typography variant="h6" align="center" gutterBottom>
