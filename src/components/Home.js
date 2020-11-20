@@ -28,7 +28,7 @@ import Link from '@material-ui/core/Link';
 //navbar
 import orange from '@material-ui/core/colors/orange';
 import { TextField } from '@material-ui/core';
-
+import './css/home.css'
 const bblue = orange[800];
 function Home(props) { 
     const [input, setInput] = useState("")      //https://www.daveramsey.com/blog/real-estate-trends'})
@@ -209,6 +209,12 @@ function Copyright() {
                     </AppBar>
                   
                     <main>
+                      <div className='sideDesc'>
+                        <h2>Title</h2>
+                        <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
+                      </div>
+
+                      <div>
                         {/* Hero unit */}
                         <div className={classes.heroContent}>
                         <Container maxWidth="md">
@@ -289,6 +295,20 @@ function Copyright() {
                             )) : ' ... input snapshot above'}
                         </Grid>
                         </Container>
+                      </div>
+                      <div className='rightsideDesc'>
+                        <h2>Title</h2>
+                        <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
+                        <h2>Title</h2>
+                        <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
+                        <h2>Title</h2>
+                        <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
+                        <h2>Title</h2>
+                        <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
+                        <h2>Title</h2>
+                        <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
+                      </div>
+                      
                     </main>
                     {/* Footer */}
                     {/* <footer className={classes.footer}>

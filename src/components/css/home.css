@@ -1,0 +1,30 @@
+
+
+.sideDesc{
+    position: absolute;
+    top: 90px; 
+    left: 50px; 
+    width: 400px; 
+}
+
+.rightsideDesc{
+    margin-top: 25px;
+    position: absolute;
+    top: 100px; 
+    right: 50px; 
+    width: 340px; 
+    height: 1600px;
+    border: 15px dashed orange;
+    padding: 15px 40px;
+    margin-bottom: 400px;
+    
+    
+
+}
+.rightsideDesc, h2{
+    padding: 25px 20px;
+    font-size: 2rem;
+}
+.rightsideDesc, p{
+    font-size: 1.2rem;
+}

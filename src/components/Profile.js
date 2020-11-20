@@ -32,7 +32,7 @@ import Link from '@material-ui/core/Link';
 import orange from '@material-ui/core/colors/orange';
 import { TextField } from '@material-ui/core';
 import Topbar from './Topbar.js'
-
+import './css/profile.css'
 
 const bblue = orange[800];
 function rand() {
@@ -251,8 +251,16 @@ function Copyright() {
                         <Typography variant="h6" className={classes.menuText} color="inherit" noWrap>
                             Housing Busters
                         </Typography>
-                        <button type="button" onClick={handleOpen}>
-                          Open Modal
+                        
+                        <Typography variant="h6"  className={classes.menuText} color="inherit" noWrap>
+                        <HBLink  className="link-color" style={{textDecoration: 'none', color: 'white'}} to='/'> Home </HBLink>
+                        </Typography>
+                        <Typography  variant="h6" className={classes.menuText} color="inherit" noWrap>
+                          <HBLink className="link-color" className={classes.menuText} style={{textDecoration: 'none', color: 'white'}} to='/profile'>Profile</HBLink>
+                        </Typography>
+                            
+                        <button className="signupBtn" type="button" onClick={handleOpen}>
+                          Sign up
                         </button>
                         <Modal
                           open={open}
@@ -262,14 +270,6 @@ function Copyright() {
                         >
                           {body}
                         </Modal>
-                        <Typography variant="h6"  className={classes.menuText} color="inherit" noWrap>
-                        <HBLink  className="link-color" style={{textDecoration: 'none', color: 'white'}} to='/'> Home </HBLink>
-                        </Typography>
-                        <Typography  variant="h6" className={classes.menuText} color="inherit" noWrap>
-                          <HBLink className="link-color" className={classes.menuText} style={{textDecoration: 'none', color: 'white'}} to='/profile'>Profile</HBLink>
-                        </Typography>
-                            
-                            
                         </Toolbar>
                     </AppBar>
                     <Topbar/>
