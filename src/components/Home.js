@@ -29,6 +29,8 @@ import Link from '@material-ui/core/Link';
 import orange from '@material-ui/core/colors/orange';
 import { TextField } from '@material-ui/core';
 import './css/home.css'
+
+
 const bblue = orange[800];
 function Home(props) { 
     const [input, setInput] = useState("")      //https://www.daveramsey.com/blog/real-estate-trends'})
@@ -151,6 +153,7 @@ function Copyright() {
     footer: {
       backgroundColor: theme.palette.background.paper,
       padding: theme.spacing(6),
+      
     },
     menuText: {
       marginRight: 200,
@@ -214,7 +217,7 @@ function Copyright() {
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                       </div>
 
-                      <div>
+                      <div class='heroContainer'>
                         {/* Hero unit */}
                         <div className={classes.heroContent}>
                         <Container maxWidth="md">
@@ -307,11 +310,15 @@ function Copyright() {
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                         <h2>Title</h2>
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
+                        
                       </div>
                       
                     </main>
+                    <div className = "footerContainer">
+
+                        </div>
                     {/* Footer */}
-                    {/* <footer className={classes.footer}>
+                    <footer className={classes.footer} style={{backgroundColor: bblue}}>
                         <Typography variant="h6" align="center" gutterBottom>
                         Footer
                         </Typography>
@@ -319,9 +326,10 @@ function Copyright() {
                         Something here to give the footer a purpose!
                         </Typography>
                         <Copyright />
-                    </footer> */}
+                    </footer>
                     {/* End footer */}
                 </React.Fragment>
+                
             
             
         </div>
