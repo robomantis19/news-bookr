@@ -29,7 +29,7 @@ import Link from '@material-ui/core/Link';
 import orange from '@material-ui/core/colors/orange';
 import { TextField } from '@material-ui/core';
 import './css/home.css'
-
+import appPic from './app.png'
 
 const bblue = orange[800];
 function Home(props) { 
@@ -135,14 +135,19 @@ function Copyright() {
       marginTop: theme.spacing(4),
     },
     cardGrid: {
-      paddingTop: theme.spacing(8),
+      paddingTop: theme.spacing(16),
       paddingBottom: theme.spacing(8),
+      marginBottom: theme.spacing(16),
+      minHeight: '800px',
+      height: '100%',
+      
     },
     card: {
       width: '100%',
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
+      
     },
     cardMedia: {
       paddingTop: '56.25%', // 16:9
@@ -217,7 +222,7 @@ function Copyright() {
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                       </div>
 
-                      <div class='heroContainer'>
+                      <div class='heroContainer' style={{height: '100%'}}>
                         {/* Hero unit */}
                         <div className={classes.heroContent}>
                         <Container maxWidth="md">
@@ -296,10 +301,10 @@ function Copyright() {
                                 </Card>
                             </Grid>
                             )) : ' ... input snapshot above'}
+                            
                         </Grid>
                         </Container>
-                      </div>
-                      <div className='rightsideDesc'>
+                        <div className='rightsideDesc'>
                         <h2>Title</h2>
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                         <h2>Title</h2>
@@ -311,14 +316,19 @@ function Copyright() {
                         <h2>Title</h2>
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                         
+                        </div>
                       </div>
                       
+                      
                     </main>
-                    <div className = "footerContainer">
+                    
+                    {/* End footer */}
+                </React.Fragment>
+                <div className = "footerContainer">
 
-                        </div>
+                </div>
                     {/* Footer */}
-                    <footer className={classes.footer} style={{backgroundColor: bblue}}>
+                    <footer className={classes.footer} style={{backgroundColor: bblue, height: '300px', paddingBottom: '0px',marginBottom: '0px'}}>
                         <Typography variant="h6" align="center" gutterBottom>
                         Footer
                         </Typography>
@@ -327,8 +337,6 @@ function Copyright() {
                         </Typography>
                         <Copyright />
                     </footer>
-                    {/* End footer */}
-                </React.Fragment>
                 
             
             

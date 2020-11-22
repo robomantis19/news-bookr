@@ -278,7 +278,7 @@ function Copyright() {
                     </div>
                     <main>
                         {/* Hero unit */}
-                        <div className={classes.heroContent}>
+                        <div className={classes.heroContent} className="heroContainer">
                         <Container maxWidth="md">
                             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                                 Housing Busters!
@@ -363,6 +363,15 @@ function Copyright() {
                                       
                                       
                                       }
+                        <footer className={classes.footer} style={{backgroundColor: bblue}}>
+                        <Typography variant="h6" align="center" gutterBottom>
+                        Footer
+                        </Typography>
+                        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+                        Something here to give the footer a purpose!
+                        </Typography>
+                        <Copyright />
+                        </footer>
                         </main>
                     {/* Footer */}
                     {/* <footer className={classes.footer}>
