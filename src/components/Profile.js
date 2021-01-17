@@ -88,7 +88,13 @@ function Profile(props) {
       console.log('useEffect token', props.pocket_token)
       Mercury.parse( `https://cors-anywhere.herokuapp.com/${output.url}`, {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
       console.log("snapshots", snapshot);
-      
+      axios.post('http://localhost:4000/api/users/1/orders', {id:100, image: snapshot.lead_image_url, title: snapshot.title, description: snapshot.content, starRating:5, user_id: 1})
+        .then(res => {
+          console.log('post request', res);
+        })
+        .catch(err => {
+          console.log('post error', err);
+        })
     },[output.url])
     function deleteItem(id){
       console.log('ID:', id)
