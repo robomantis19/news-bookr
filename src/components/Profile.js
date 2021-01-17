@@ -33,6 +33,9 @@ import orange from '@material-ui/core/colors/orange';
 import { TextField } from '@material-ui/core';
 import Topbar from './Topbar.js'
 import './css/profile.css'
+//axios
+import axios from 'axios';
+
 
 const bblue = orange[800];
 function rand() {
@@ -85,6 +88,7 @@ function Profile(props) {
       console.log('useEffect token', props.pocket_token)
       Mercury.parse( `https://cors-anywhere.herokuapp.com/${output.url}`, {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
       console.log("snapshots", snapshot);
+      
     },[output.url])
     function deleteItem(id){
       console.log('ID:', id)
@@ -365,10 +369,10 @@ function Copyright() {
                                       }
                         <footer className={classes.footer} style={{backgroundColor: bblue}}>
                         <Typography variant="h6" align="center" gutterBottom>
-                        Footer
+                          Footer
                         </Typography>
                         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                        Something here to give the footer a purpose!
+                          Something here to give the footer a purpose!
                         </Typography>
                         <Copyright />
                         </footer>

@@ -1,0 +1,21 @@
+[
+{
+    "value":"Bkdf3i2k201k1022kf9ddkd02",
+    "quip":15
+}
+{
+    "value":"gkdf3i2k201k1022kf9ddkd02", "quip":25
+}
+{
+    "value":"akdf3i2k201k1022kf9ddkd02", "quip":35
+}
+{
+    "value":"fkdf3i2k201k1022kf9ddkd02", "quip":12
+}
+{
+    "value":"skdf3i2k201k1022kf9ddkd02", "quip":11
+}
+{
+    "value":"ekdf3i2k201k1022kf9ddkd02", "quip":16
+}
+]

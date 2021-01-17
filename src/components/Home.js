@@ -28,8 +28,13 @@ import Link from '@material-ui/core/Link';
 //navbar
 import orange from '@material-ui/core/colors/orange';
 import { TextField } from '@material-ui/core';
-import './css/home.css'
-import appPic from './app.png'
+import './css/home.css';
+import appPic from './app.png';
+
+
+
+// import { Hash } from './json/hashingList.json';
+
 
 const bblue = orange[800];
 function Home(props) { 
@@ -37,6 +42,10 @@ function Home(props) {
     const [output, setOutput] = useState({}); 
     const [snapshot, setSnapshot] = useState([]);
     // console.log(props.isFetchingPocketDeveloper);
+    // const [USERNAME, SETUSERNAME] = useState();
+    // const [quip, setQuip] = useState(); 
+    // const [inputHash, setInputHash] = useState(Hash); 
+
     const history = useHistory();
     
     
@@ -222,6 +231,8 @@ function Copyright() {
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                       </div>
 
+
+                      {/* This was the key to dynamic height */}
                       <div class='heroContainer' style={{height: '100%'}}>
                         {/* Hero unit */}
                         <div className={classes.heroContent}>
@@ -266,6 +277,18 @@ function Copyright() {
                                     image= {card.lead_image_url}
                                     title={card.title}
                                 />
+                                
+                                  {/* {inputHash.map(item => { 
+                                    return ( 
+                                      <div key={item.index} className="classyCard">
+                                        <h3>{USERNAME}</h3>
+                                        <h2 className="queen">hash: {inputHash.value}</h2>
+                                        <h1 className="king"> quips value {inputHash.quip}</h1>
+                                      </div>
+                                    )
+                                  })} */}
+                                  
+                                
                                 <CardContent className={classes.cardContent}>
                                     <Typography gutterBottom variant="h5" component="h2">
                                     {card.title}
