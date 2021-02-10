@@ -58,14 +58,40 @@ function Profile(props) {
     const [input, setInput] = useState("")      //https://www.daveramsey.com/blog/real-estate-trends'})
     const [output, setOutput] = useState({}); 
     const [snapshot, setSnapshot] = useState([]);
+    const [userInput, setUserInput] = useState({username: "", password:""});
+    const [userOutput, setUserOutput] = useState({});
     // console.log(props.isFetchingPocketDeveloper);
     const history = useHistory();
     
+
+    //signup handleChange
+    const handleChange = (e) => { 
+      setUserInput({...userInput , [e.target.name]: e.target.value})
+      console.log(userInput)
+    }
+    function addUser(addedUser){ 
+      const user = { 
+        username: addedUser.username, 
+        password: addedUser.password
+      }
+      console.log("user" , user);
+
+    }
+
     
-    console.log(snapshot);
-    const changeHandler = e => { 
+
+    const submitUserSignUp = (e) =>{ 
+      e.preventDefault();
+      addUser(userInput)
+      setUserInput("")
+      
+    }
+    
+    // console.log(snapshot); this is the url changeHandler 
+    const changeHandler = (e) => { 
       setInput(e.target.value)
     }
+  
     function addItem(itemName){
       let item = {
         url: itemName, 
@@ -77,25 +103,29 @@ function Profile(props) {
       setOutput(item);
       console.log('id', item.id)
     }
-    const submitUrl = e => { 
+    const submitUrl = (e) => { 
       e.preventDefault();
       // setInput(input);
       addItem(input)
       setInput("")
     }
     //stars
+    
     useEffect(() => { 
       console.log('useEffect token', props.pocket_token)
       Mercury.parse( `https://cors-anywhere.herokuapp.com/${output.url}`, {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
       console.log("snapshots", snapshot);
-      axios.post('http://localhost:4000/api/users/1/orders', {id:100, image: snapshot.lead_image_url, title: snapshot.title, description: snapshot.content, starRating:5, user_id: 1})
-        .then(res => {
-          console.log('post request', res);
-        })
-        .catch(err => {
-          console.log('post error', err);
-        })
+      if(snapshot.lead_image_url != null){
+        axios.post('http://localhost:4000/api/users/1/orders', {image: snapshot.lead_image_url, title: snapshot.title, description: snapshot.content, starRating: 5.0, user_id: 1})
+          .then(res => {
+            console.log('post request', res);
+          })
+          .catch(err => {
+            console.log('post error', err);
+          })
+        }
     },[output.url])
+    
     function deleteItem(id){
       console.log('ID:', id)
       let id_filter = snapshot.filter( (item) => { 
@@ -144,6 +174,7 @@ function Profile(props) {
 
       
 function Copyright() {
+  
     return (
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
@@ -232,10 +263,29 @@ function Copyright() {
   }));
   const body = (
     <div style={{backgroundColor: 'white', marginLeft: '10%', marginTop: '10%', width: '800px', height: '400px', marginBottom: '200px'}} className={classes.paper}>
-      <h2 id="simple-modal-title">Sign in</h2>
-      <p  id="simple-modal-description">
+      {/* <h2 id="simple-modal-title">Sign in</h2> */}
+      <h2  id="simple-modal-description">
         sign up
-      </p>
+      </h2>
+      <form onSubmit={submitUserSignUp}>
+      <input 
+      type="text"
+      name="username"
+      placeholder="Username"
+      onChange = {handleChange}
+      value = {userInput.username || ""}
+      />
+      <input 
+      type="text"
+      name="password"
+      placeholder="Password"
+      onChange = {handleChange}
+      value = {userInput.password || ""}
+      />
+      <button>Submit</button>
+      </form>
+
+      {console.log("username : ", userInput.username, "password : " , userInput.password)}
       <SimpleModal />
     </div>
   );

@@ -41,6 +41,7 @@ function Home(props) {
     const [input, setInput] = useState("")      //https://www.daveramsey.com/blog/real-estate-trends'})
     const [output, setOutput] = useState({}); 
     const [snapshot, setSnapshot] = useState([]);
+    
     // console.log(props.isFetchingPocketDeveloper);
     // const [USERNAME, SETUSERNAME] = useState();
     // const [quip, setQuip] = useState(); 
@@ -327,7 +328,7 @@ function Copyright() {
                             
                         </Grid>
                         </Container>
-                        <div className='rightsideDesc'>
+                        {/* <div className='rightsideDesc'>
                         <h2>Title</h2>
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                         <h2>Title</h2>
@@ -339,7 +340,7 @@ function Copyright() {
                         <h2>Title</h2>
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                         
-                        </div>
+                        </div> */}
                       </div>
                       
                       
