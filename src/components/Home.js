@@ -64,7 +64,7 @@ function Home(props) {
     //stars
     useEffect(() => { 
       console.log('useEffect token', props.pocket_token)
-      Mercury.parse(output.url ? `https://cors-anywhere.herokuapp.com/${output.url}` :`https://cors-anywhere.herokuapp.com/https://www.daveramsey.com/blog/real-estate-trends` , {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
+      Mercury.parse(output.url ? `${output.url}` :`https://www.daveramsey.com/blog/real-estate-trends` , {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
       console.log("snapshots", snapshot);
     },[output.url])
     function deleteItem(id){
@@ -304,7 +304,7 @@ function Copyright() {
                             
                         </Grid>
                         </Container>
-                        <div className='rightsideDesc'>
+                        {/* <div className='rightsideDesc'>
                         <h2>Title</h2>
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                         <h2>Title</h2>
@@ -316,7 +316,7 @@ function Copyright() {
                         <h2>Title</h2>
                         <p> This is an example of a paragraph input data here, for explanation of text, read this. No really read this whole thing and it will all become clear.</p>
                         
-                        </div>
+                        </div> */}
                       </div>
                       
                       
