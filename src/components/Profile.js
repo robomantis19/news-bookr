@@ -82,9 +82,15 @@ function Profile(props) {
 
     const submitUserSignUp = (e) =>{ 
       e.preventDefault();
-      addUser(userInput)
-      setUserInput("")
-      
+      addUser(userInput);
+      setUserInput("");
+      axios.post('http://localhost:4000/api/users/register',{username: userInput.username, password: userInput.password})
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => { 
+        console.log(err); 
+      })
     }
     
     // console.log(snapshot); this is the url changeHandler 
@@ -264,11 +270,13 @@ function Copyright() {
   const body = (
     <div style={{backgroundColor: 'white', marginLeft: '10%', marginTop: '10%', width: '800px', height: '400px', marginBottom: '200px'}} className={classes.paper}>
       {/* <h2 id="simple-modal-title">Sign in</h2> */}
-      <h2  id="simple-modal-description">
+      <div className="signUpDiv">
+      <h2 className="signupH2" id="simple-modal-description">
         sign up
       </h2>
-      <form onSubmit={submitUserSignUp}>
+      <form className="signUp Form"onSubmit={submitUserSignUp}>
       <input 
+      className= "signUp Username"
       type="text"
       name="username"
       placeholder="Username"
@@ -276,17 +284,27 @@ function Copyright() {
       value = {userInput.username || ""}
       />
       <input 
-      type="text"
+      className = 'signUp Password'
+      type="password"
       name="password"
       placeholder="Password"
       onChange = {handleChange}
       value = {userInput.password || ""}
       />
-      <button>Submit</button>
+      <input 
+      className = {userInput.password == userInput.confirm ? 'signUp Confirm' : 'signUp Confirm Red'}
+      type="password"
+      name = "confirm"
+      placeholder="Confirm Password"
+      onChange = {handleChange}
+      value = {userInput.confirm || ""}
+      />
+      <button className = "submitButton">Submit</button>
       </form>
 
       {console.log("username : ", userInput.username, "password : " , userInput.password)}
       <SimpleModal />
+      </div>
     </div>
   );
     return (

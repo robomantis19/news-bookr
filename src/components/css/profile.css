@@ -14,3 +14,59 @@
 .heroContainer{
     height: 1800px;
 }
+.signUpDiv{
+    background-color: purple;
+
+}
+.signUp{
+    background-color: orange;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    font-size: 1rem;
+    padding-left: 10px;
+}
+
+.Username{
+    background-color: white;
+    height: 40px;
+    width: 180px;
+    border-radius: .2rem;
+    border: none;
+}
+
+.Password{
+    background-color: white;
+    height: 40px;
+    width: 160px;
+    border-radius: .2rem;
+    border: none;
+}
+
+.Confirm{
+    background-color: white;
+    height: 40px;
+    width: 160px;
+    border-radius: .2rem;
+    border: none;
+}
+
+.submitButton{
+    margin-top: 20px;
+    width: 160px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    border-radius: .2rem;
+    color: orange;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.signupH2{
+    background-color:orange;
+    height: 80px;
+    text-align: center;
+    font-size: 2.8rem;
+    color: rgb(122, 74, 122);
+}
