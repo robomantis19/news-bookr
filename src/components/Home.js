@@ -50,7 +50,7 @@ function Home(props) {
     const history = useHistory();
     
     
-    console.log(snapshot);
+    // console.log(snapshot);
     const changeHandler = e => { 
       setInput(e.target.value)
     }
@@ -74,7 +74,8 @@ function Home(props) {
     //stars
     useEffect(() => { 
       console.log('useEffect token', props.pocket_token)
-      Mercury.parse(output.url ? `https://cors-anywhere.herokuapp.com/${output.url}` :`https://cors-anywhere.herokuapp.com/https://www.daveramsey.com/blog/real-estate-trends` , {contentType: 'text'}).then(result => setSnapshot((snapshot) => [...snapshot, result]))
+      // console.log('url', output.url)
+      Mercury.parse(`stackoverflow.com`).then(result => setSnapshot((snapshot) => [...snapshot, result]))
       console.log("snapshots", snapshot);
     },[output.url])
     function deleteItem(id){
